@@ -1,10 +1,10 @@
-import React, {useState} from 'react'
-import {Image, Text, TextInput, TouchableOpacity, View } from 'react-native'
+import React, { useState } from 'react'
+import { Image, Text, TextInput, TouchableOpacity, View } from 'react-native'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 
 import styles from './styles'
 
-const LoginScreen = ({navigation}) => {
+const LoginScreen = ({ navigation }) => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
@@ -19,7 +19,7 @@ const LoginScreen = ({navigation}) => {
     return (
         <View style={styles.container}>
             <KeyboardAwareScrollView
-                style={{flex:1, width:'100%'}}
+                style={{ flex: 1, width: '100%' }}
                 keyboardShouldPersistTaps="always">
                 <Image
                     style={styles.logo}
@@ -32,7 +32,28 @@ const LoginScreen = ({navigation}) => {
                     onChangeText={(text) => setEmail(text)}
                     value={email}
                     underlineColorAndroid='transparent'
+                    autoCapitalize='none'
                 ></TextInput>
+                <TextInput
+                    style={styles.input}
+                    placeholderTextColor="#aaaaaa"
+                    secureTextEntry
+                    placeholder='Password'
+                    onChangeText={(text) => setPassword(text)}
+                    value={password}
+                    underlineColorAndroid="transparent"
+                    autoCapitalize="none"
+                ></TextInput>
+                <TouchableOpacity>
+                    style={styles.button}
+                    onPress={() => { onLoginPress() }}
+                    <Text style={styles.buttonTitle}>Log in</Text>
+                </TouchableOpacity>
+                <View style={styles.footerView}>
+                    <Text style={styles.footerText}>Don't have an account?
+                        <Text onPress={onFooterLinkPress} style={styles.footerLink}>Sign up</Text>
+                    </Text>
+                </View>
             </KeyboardAwareScrollView>
         </View>
     )
