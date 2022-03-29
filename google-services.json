@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "108201933547",
+    "project_id": "happy-plant-app",
+    "storage_bucket": "happy-plant-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:108201933547:android:f983db61e3c1ddf0659cae",
+        "android_client_info": {
+          "package_name": "com.reactnativefirebase"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "108201933547-1453qhvld1ffk141bsampvedinpediro.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBKS_hB5I8p6q6Hm2sYVBribE-0GxqTH_o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "108201933547-1453qhvld1ffk141bsampvedinpediro.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
