@@ -1,27 +1,25 @@
 import { StyleSheet } from 'react-native';
-import { color } from 'react-native/Libraries/Components/View/ReactNativeStyleAttributes';
+
 
 export default StyleSheet.create({
     container: {
         flex: 1,
         alignItems: 'center'
-    },
-    title: {
-        flex: 1, 
-        alignSelf: 'center',
-        fontSize:50,
-        fontFamily:"Montserrat-ExtraBold",
-        fontWeight:"700",
-        color:'green',
-        marginTop:10 
-    },
+    }
+
+    ,
+    title: {}
+
+    ,
     logo: {
         flex: 1,
-        height: 180,
-        width: 140,
+        height: 120,
+        width: 90,
         alignSelf: "center",
         margin: 30
-    },
+    }
+
+    ,
     input: {
         height: 48,
         borderRadius: 5,
@@ -32,7 +30,9 @@ export default StyleSheet.create({
         marginLeft: 30,
         marginRight: 30,
         paddingLeft: 16
-    },
+    }
+
+    ,
     button: {
         backgroundColor: 'green',
         marginLeft: 30,
@@ -42,24 +42,34 @@ export default StyleSheet.create({
         borderRadius: 5,
         alignItems: "center",
         justifyContent: 'center'
-    },
+    }
+
+    ,
     buttonTitle: {
         color: 'white',
         fontSize: 16,
         fontWeight: "bold"
-    },
+    }
+
+    ,
     footerView: {
         flex: 1,
         alignItems: "center",
         marginTop: 20
-    },
+    }
+
+    ,
     footerText: {
         fontSize: 16,
         color: '#2e2e2d'
-    },
+    }
+
+    ,
     footerLink: {
         color: "#788eec",
         fontWeight: "bold",
         fontSize: 16
     }
-})
+}
+
+)

@@ -21,9 +21,11 @@ const LoginScreen = ({ navigation }) => {
             <KeyboardAwareScrollView
                 style={{ flex: 1, width: '100%' }}
                 keyboardShouldPersistTaps="always">
+                <Text
+                    style={styles.title}>PLANTapp</Text>
                 <Image
                     style={styles.logo}
-                    source={require('../../../assets/icon.png')}
+                    source={require('../../../assets/happyP.png')}
                 ></Image>
                 <TextInput
                     style={styles.input}
@@ -44,9 +46,9 @@ const LoginScreen = ({ navigation }) => {
                     underlineColorAndroid="transparent"
                     autoCapitalize="none"
                 ></TextInput>
-                <TouchableOpacity>
+                <TouchableOpacity
                     style={styles.button}
-                    onPress={() => { onLoginPress() }}
+                    onPress={() => { onLoginPress() }}>
                     <Text style={styles.buttonTitle}>Log in</Text>
                 </TouchableOpacity>
                 <View style={styles.footerView}>
