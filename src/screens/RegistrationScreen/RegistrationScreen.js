@@ -26,12 +26,13 @@ const RegistrationScreen = ({ navigation }) => {
             .auth()
             .createUserWithEmailAndPassword(email, password)
             .then((res) => {
-                const uid = response.user.uid
+                const uid = res.user.uid
                 const data = {
                     id: uid, 
                     email, 
                     fullName
                 }
+                console.log('created')
                 const usersRef = firebase.firestore().collection('users')
                 usersRef 
                     .doc(uid)

@@ -10,7 +10,7 @@ export default StyleSheet.create({
         flex: 1, 
         alignSelf: 'center',
         fontSize:50,
-        fontFamily:"Montserrat-ExtraBold",
+        fontFamily:"Montserrat-Bold",
         fontWeight:"700",
         color:'green',
         marginTop:10 
