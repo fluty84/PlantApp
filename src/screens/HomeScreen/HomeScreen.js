@@ -2,16 +2,17 @@ import React, { useEffect, useState } from 'react'
 import { FlatList, Keyboard, Text, TextInput, TouchableOpacity, View } from 'react-native'
 import styles from './styles'
 import { firebase } from '../../firebase/config'
+import { NavigationContainer } from '@react-navigation/native'
 
-const HomeScreen = (props) => {
+const HomeScreen = ({props, userLoged, navigation}) => {
 
     const [entityText, setEntityText] = useState('')
     const [entities, setEntities] = useState([])
 
     const entityRef = firebase.firestore().collection('entities')
-    console.log(props.route.params)
-    const userID = props.route.params.user.id // != guide extraData.user.id
-    
+
+    let userID 
+    userLoged ? userID = userLoged : userID = props.route.params.user.id
 
     useEffect(() => {
         entityRef
@@ -62,6 +63,10 @@ const HomeScreen = (props) => {
         )
     }
 
+    const backLoggin = () => {
+        navigation.navigate('Login')
+    }
+
     return (
         <View style={styles.container}>
             <View style={styles.formContainer}>
@@ -78,6 +83,9 @@ const HomeScreen = (props) => {
                     <Text style={styles.buttonText}>Agregar</Text>
                 </TouchableOpacity>
             </View>
+            <TouchableOpacity style={styles.button} onPress={onAddButtonPress}>
+                <Text style={styles.buttonText} onPress={backLoggin}>Cambiar de usuario</Text>
+            </TouchableOpacity>
             {
                 entities && (
                     <View style={styles.listContainer}>

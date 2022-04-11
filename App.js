@@ -7,8 +7,8 @@ import { LoginScreen, HomeScreen, RegistrationScreen } from './src/screens'
 import { decode, encode } from 'base-64'
 import AppLoading from "expo-app-loading"
 import { useFonts, Inter_900Black } from '@expo-google-fonts/inter'
+import { firebase } from './src/firebase/config'
 
-import * as Font from 'expo-font'
 
 if (!global.btoa) { global.btoa = encode }
 if (!global.atob) { global.atob = decode }
@@ -21,57 +21,53 @@ export default function App() {
   const [loading, setLoading] = useState(true)
   const [user, setUser] = useState(null)
 
-  // useEffect(() => { //to load the fonts async
-
-  //   const loadFonts = async () => {
-  //     await Font.loadAsync({
-  //       'Montserrat-Bold': require('./assets/fonts/Montserrat-ExtraBold.otf'),
-  //     }).then(res => {
-  //       console.log("FONTS LOADED!", res);
-  //     }).catch(Err => {
-  //       console.log(Err);
-  //     });
-  //   }
-
-  //   loadFonts()
-  //   console.log(user);
-  // }, [])
-
-  // const [fontLoaded, setFontLoaded] = useState(false)
-
-  // if (!fontLoaded) {
-  //   return (
-  //     <AppLoading
-  //       startAsync={loadFonts}
-  //       onFinish={setFontLoaded(true)}
-  //       onError={console.warn}
-  //       autoHideSplash={false}
-  //     />
-  //   ) 
-  // } else {
-
   let [fontLoaded] = useFonts({
     Inter_900Black,
   })
 
-  if(!fontLoaded){
+  useEffect(() => {
+    const usersRef = firebase.firestore().collection('users')
+    firebase.auth().onAuthStateChanged(user => {
+      if(user){
+        console.log(user)
+        usersRef
+          .doc(user.uid)
+          .get()
+          .then((document)=> {
+            const userData = document.data()
+            setLoading(false)
+            setUser(userData)
+          })
+          .catch((error)=>{
+            setLoading(false)
+          })
+      } else {
+        setLoading(false)
+      }
+    })
+  }, [])
+
+  if (!fontLoaded || loading) {
     return <AppLoading></AppLoading>
   }
   return (
     <NavigationContainer>
       <Stack.Navigator>
         {user ?
-          (
+          ( <>
             <Stack.Screen name="Home">
-              {props => <HomeScreen {...props} extraData={user}></HomeScreen>}
+              {props => <HomeScreen {...props} userLoged={user} extraData={user}></HomeScreen>}
             </Stack.Screen>
+            <Stack.Screen name="Login" component={LoginScreen}></Stack.Screen>
+            </>
           )
           :
           (
             <>
               <Stack.Screen name="Login" component={LoginScreen}></Stack.Screen>
               <Stack.Screen name="Registration" component={RegistrationScreen}></Stack.Screen>
-              <Stack.Screen name="Home">
+              <Stack.Screen name="Home"
+              >
                 {props => <HomeScreen {...props} extraData={user}></HomeScreen>}
               </Stack.Screen>
             </>
