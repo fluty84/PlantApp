@@ -18,7 +18,7 @@ const LoginScreen = ({ navigation }) => {
             .auth()
             .signInWithEmailAndPassword(email, password)
             .then((res) => {
-                const uid = response.user.uid
+                const uid = res.user.uid
                 const usersRef = firebase.firestore().collection('users')
 
                 usersRef
