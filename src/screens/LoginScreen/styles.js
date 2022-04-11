@@ -10,8 +10,7 @@ export default StyleSheet.create({
         flex: 1, 
         alignSelf: 'center',
         fontSize:50,
-        fontFamily:"Montserrat-Bold",
-        fontWeight:"700",
+        fontFamily:"Inter_900Black",
         color:'green',
         marginTop:10 
     },
