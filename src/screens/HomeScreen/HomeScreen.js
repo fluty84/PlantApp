@@ -40,32 +40,13 @@ const HomeScreen = ({ props, userLoged, navigation }) => {
     }, [])
 
     const onAddButtonPress = () => {
-        console.log('P')
-        if (entityText && entityText.length > 0) {
-            const timestamp = firebase.firestore.FieldValue.serverTimestamp()
-
-            const data = {
-                text: entityText,
-                authorID: userID,
-                createdAt: timestamp
-            }
-            entityRef
-                .add(data)
-                .then(_doc => {
-                    setEntityText('')
-                    Keyboard.dismiss()
-                })
-                .catch((error) => alert(error))
-        }
-    }
-    const onAddButtonPressP = () => {
         console.log('Puta', entityText, 'hola')
-        const {name, days} = entityText
-        console.log('datos',name, days)
+        const { name, days } = entityText
+        console.log('datos', name, days)
         const timestamp = firebase.firestore.FieldValue.serverTimestamp()
-        
+
         if (name.length > 0) {
-            
+
             console.log('pasó')
             const data = {
                 authorID: userID,
@@ -85,21 +66,40 @@ const HomeScreen = ({ props, userLoged, navigation }) => {
     }
 
     const renderEntity = ({ item, index }) => { //new plant form
-        let today = Date()
-        console.log(item.createdAt, 'date', today)
-        
-        const restDays = (item) => {
-            console.log(item.timestamp)
+
+        const letWater = (item) => {
+            
+            entityRef
+                .doc(item)
+                .update({ lastWater: Date() })
+                .catch((error) => alert(error))
         }
+
+        let daysLeft = ""
+
+        const restDays = () => {
+            console.log('date', item.lastWater)    
+
+            let lastWater = new Date(item.lastWater)
+            let now = new Date()
+
+            let substract = now.getTime() - lastWater.getTime() 
+            
+            daysLeft =  item.days - Math.round(substract / (1000 * 60 * 60 * 24))
+   
+        }
+
+        restDays()
+
 
         return (
             <View style={styles.entityContainer}>
                 <Text style={styles.entityText}>
-                    {item.name} 
+                    {item.name}
                 </Text>
                 <Text>Regar cada: {item.days} dias </Text>
-                <Text>Quedan: {today}</Text>
-                <TouchableOpacity style={styles.button}>
+                <Text>Quedan:{daysLeft} dias</Text>
+                <TouchableOpacity style={styles.button} onPress={() => letWater(item.id)}>
                     <Text style={styles.buttonText}>Regada :)</Text>
                 </TouchableOpacity>
             </View>
@@ -148,7 +148,7 @@ const HomeScreen = ({ props, userLoged, navigation }) => {
                             autoCapitalize="none">
                         </TextInput>
                     </View>
-                    <TouchableOpacity style={styles.button} onPress={onAddButtonPressP}>
+                    <TouchableOpacity style={styles.button} onPress={onAddButtonPress}>
                         <Text style={styles.buttonText}>Agregar</Text>
                     </TouchableOpacity>
                 </View>
