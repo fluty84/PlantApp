@@ -40,14 +40,13 @@ const HomeScreen = ({ props, userLoged, navigation }) => {
     }, [])
 
     const onAddButtonPress = () => {
-        console.log('Puta', entityText, 'hola')
+       
         const { name, days } = entityText
-        console.log('datos', name, days)
+       
         const timestamp = firebase.firestore.FieldValue.serverTimestamp()
 
         if (name.length > 0) {
 
-            console.log('pasó')
             const data = {
                 authorID: userID,
                 createdAt: timestamp,
@@ -98,7 +97,8 @@ const HomeScreen = ({ props, userLoged, navigation }) => {
                     {item.name}
                 </Text>
                 <Text>Regar cada: {item.days} dias </Text>
-                <Text>Quedan:{daysLeft} dias</Text>
+                {item.lastWater ? <Text>Quedan:{daysLeft} dias</Text> :
+                 <Text> ¡Riégame!</Text>}
                 <TouchableOpacity style={styles.button} onPress={() => letWater(item.id)}>
                     <Text style={styles.buttonText}>Regada :)</Text>
                 </TouchableOpacity>

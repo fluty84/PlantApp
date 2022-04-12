@@ -25,7 +25,7 @@ export default StyleSheet.create({
     },
 
     list : {
-        height: 420
+        height: 500
     },    
 
     input: {
@@ -69,7 +69,8 @@ export default StyleSheet.create({
     listContainer: {
         marginTop: 20,
         padding: 20,      
-        height: 300
+        height: 430,
+        width: 350
     },
     entityContainer: {
         marginTop: 16,
