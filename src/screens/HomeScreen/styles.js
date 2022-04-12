@@ -1,5 +1,6 @@
 import { useFonts } from 'expo-font';
 import { StyleSheet } from 'react-native';
+import { backgroundColor } from 'react-native/Libraries/Components/View/ReactNativeStyleAttributes';
 
 
 export default StyleSheet.create({
@@ -8,42 +9,67 @@ export default StyleSheet.create({
         alignItems: 'center'
     },
     formContainer: {
-        flexDirection: 'row',
-        height: 80,
-        marginTop: 40,
+        flexDirection: 'column',
+        height: 200,
+        width: 350,
+        marginTop: 20,
         marginBottom: 20,
         flex: 1,
         paddingTop: 10,
         paddingBottom: 10,
         paddingLeft: 30,
         paddingRight: 30,
-        justifyContent: 'center',
-        alignItems: 'center'
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        
     },
+
+    list : {
+        height: 420
+    },    
+
     input: {
-        height: 48,
+        height: 44,
         borderRadius: 5,
         overflow: 'hidden',
         backgroundColor: 'white',
         paddingLeft: 16,
         flex: 1,
-        marginRight: 5
+        marginRight: 5,
+        marginTop:5
     },
+    inputs: {
+        height: 90,
+        width: 200
+    }, 
     button: {
-        height: 47,
+        height: 44,
         borderRadius: 5,
         backgroundColor: '#788eec',
-        width: 80,
+        width: 100,
         alignItems: "center",
         justifyContent: 'center'
     },
     buttonText: {
         color: 'white',
-        fontSize: 16
+        fontSize: 16, 
+        justifyContent: 'center',
+        textAlign: 'center'
+    },
+    buttonFloor: {
+        height: 47,
+        borderRadius: 5,
+        backgroundColor: 'green',
+        width: 100,
+        alignItems: "center",
+        justifyContent: 'center',
+        marginTop: 20,
+        marginRight: 250,
     },
     listContainer: {
         marginTop: 20,
-        padding: 20,
+        padding: 20,      
+        height: 300
     },
     entityContainer: {
         marginTop: 16,

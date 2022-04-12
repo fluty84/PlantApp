@@ -14,6 +14,7 @@ const LoginScreen = ({ navigation }) => {
     }
 
     const onLoginPress = () => {
+       
         firebase
             .auth()
             .signInWithEmailAndPassword(email, password)
@@ -28,6 +29,7 @@ const LoginScreen = ({ navigation }) => {
                         if(!firestoreDocument.exists) alert("User does not exist anymore")
                         
                         const user = firestoreDocument.data()
+                        //user? setUser(user) : setUser('')
                         navigation.navigate('Home', { user })
                     })
                     .catch(error => alert(error))
