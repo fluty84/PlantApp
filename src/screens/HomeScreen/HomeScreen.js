@@ -100,7 +100,7 @@ const HomeScreen = ({ props, userLoged, navigation }) => {
                 <TouchableOpacity style={styles.button} onPress={() => letWater(item.id)}>
                     <Text style={styles.buttonText}>Regada :)</Text>
                 </TouchableOpacity>
-                <ImageUploader plantId={item.id}></ImageUploader>
+                <ImageUploader plantName={item.name}></ImageUploader>
             </View>
         )
     }
