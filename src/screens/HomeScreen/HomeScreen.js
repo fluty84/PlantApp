@@ -3,7 +3,7 @@ import { FlatList, Keyboard, Text, TextInput, TouchableOpacity, View, KeyboardAv
 import styles from './styles'
 import { firebase } from '../../firebase/config'
 import { NavigationContainer } from '@react-navigation/native'
-
+import ImageUploader from '../../components/imageUploader/ImageUploader'
 
 
 const HomeScreen = ({ props, userLoged, navigation }) => {
@@ -53,7 +53,6 @@ const HomeScreen = ({ props, userLoged, navigation }) => {
                 name,
                 days
             }
-            console.log('data', data)
             entityRef
                 .add(data)
                 .then(_doc => {
@@ -77,7 +76,6 @@ const HomeScreen = ({ props, userLoged, navigation }) => {
         let daysLeft = ""
 
         const restDays = () => {
-            console.log('date', item.lastWater)    
 
             let lastWater = new Date(item.lastWater)
             let now = new Date()
@@ -102,6 +100,7 @@ const HomeScreen = ({ props, userLoged, navigation }) => {
                 <TouchableOpacity style={styles.button} onPress={() => letWater(item.id)}>
                     <Text style={styles.buttonText}>Regada :)</Text>
                 </TouchableOpacity>
+                <ImageUploader plantId={item.id}></ImageUploader>
             </View>
         )
     }
@@ -141,7 +140,7 @@ const HomeScreen = ({ props, userLoged, navigation }) => {
                                     ...entityText,
                                     days: text
                                 })
-                                console.log(entityText)
+                               
                             }}
                             value={entityText.days}//cambiar
                             underlineColorAndroid="transparent"
