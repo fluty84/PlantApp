@@ -24,19 +24,26 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
       },
+      "googleServicesFile": "./google-services.json",
       "softwareKeyboardLayoutMode": "pan"
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }, 
+    },
     "plugins": [
-      [
-        "expo-image-picker",
-        {
-          "photosPermission": "The app accesses your photos to let you share them with your friends."
-        }
-      ]
+      "@react-native-firebase/app",
+      "expo-media-library",
+      // {
+      //   "photosPermission": "Allow $(PRODUCT_NAME) to access your photos.",
+      //   "savePhotosPermission": "Allow $(PRODUCT_NAME) to save photos.",
+      //   "isAccessMediaLocationEnabled": true
+      // }
+      // [
+         "expo-image-picker"
+      //   {
+      //     "photosPermission": "The app accesses your photos to let you share them with your friends."
+      //   }
+      // ]
     ]
-  
   }
 }

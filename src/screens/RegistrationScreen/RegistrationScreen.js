@@ -32,7 +32,6 @@ const RegistrationScreen = ({ navigation }) => {
                     email, 
                     fullName
                 }
-                console.log('created')
                 const usersRef = firebase.firestore().collection('users')
                 usersRef 
                     .doc(uid)

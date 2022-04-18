@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, } from 'react'
 import {
     View,
     SafeAreaView,
@@ -8,24 +8,27 @@ import {
     Alert,
     Image
 } from 'react-native';
-//import {ImagePicker, launchCamera, launchImageLibrary} from 'react-native-image-picker'
-//import * as ImagePicker from 'react-native-image-picker'
 import * as ImagePicker from 'expo-image-picker'
-import storage from '@react-native-firebase/storage'
-import * as Progress from 'react-native-progress'
 import { firebase } from '../../firebase/config'
+
+import * as MediaLibrary from 'expo-media-library'
 
 import styles from './styles'
 
 
-const ImageUploader = ({ plantName }) => {
+const ImageUploader = ({ plantName, plant }) => {
 
     const [image, setImage] = useState(null)
     const [imageName, setImageName] = useState(null)
     const [uploading, setUploading] = useState(false)
     const [transferred, setTransferred] = useState(0)
+    const [photo, setPhoto] = useState(null)
     const [galleryPermission, setGalleryPermission] = useState(null)
+    const [status, requestPermission] = MediaLibrary.usePermissions();
 
+    let source = {}
+
+    const entityRef = firebase.firestore().collection('plants')
 
     const takeImage = async () => {
 
@@ -35,79 +38,68 @@ const ImageUploader = ({ plantName }) => {
         });
 
         if (!result.cancelled) {
+
+
+            const uri = result.uri
+            const type = result.type
+            const name = plantName.replace(/\s+/g, '').toLowerCase() + ".jpg"
+
+            source = {
+                uri,
+                type,
+                name
+            }
+
+            console.log(source)
+
             setImage(result.uri);
-            console.log(image)
         }
 
         setImageName(plantName)
 
     }
 
-    const uploadImage = async () => {
-        //const { uri } = image
-        let uploadUri = Platform.OS === 'ios' ? uri.replace('file://', '') : image
 
-        setUploading(true)
-        setTransferred(0)
+    const saveImg = async () => {
+        const permision = await MediaLibrary.requestPermissionsAsync()
 
-       const task = firebase
-            .storage()
-            .ref(imageName)
-            .putFile(uploadUri)
-            .then((snapshot) => {
-                //You can check the image is now uploaded in the storage bucket
-                console.log(`${imageName} has been successfully uploaded.`)
-            })
-            .catch((error) => console.log('uploading image error => ', error))
-
-        // const task = storage()
-        //     .ref(imageName)
-        //     .putFile(uploadUri)
-
-        //set progress state
-
-        task.on('state_changed', snapshot => {
-                    setTransferred(
-                        Math.round(snapshot.bytesTransferred / snapshot.totalBytes) * 10000
-                    )
-                })
-
-        try {
-                    await task
-                } catch (error) { console.log(error) }
-
-                setUploading(false)
-
-                Alert.alert(
-                    'Foto agregada con éxito!',
-                )
-
-                setImage(null)
-            }
-
-    return (
-            <SafeAreaView style={styles.container}>
-
-                <TouchableOpacity style={styles.selectButton} onPress={takeImage}>
-                    <Text style={styles.buttonText}>Hacer Foto</Text>
-                </TouchableOpacity>
-
-                <View style={styles.imageContainer}>
-                    {image && <Image source={{ uri: image }} style={styles.imageBox} />}
-                    {uploading ? (
-                        <View style={styles.progressBarContainer}>
-                            <Progress.Bar progress={transferred} width={300} />
-                        </View>
-                    ) : (
-                        <TouchableOpacity style={styles.uploadButton} onPress={uploadImage}>
-                            <Text style={styles.buttonText}>Subir Foto</Text>
-                        </TouchableOpacity>
-                    )}
-                </View>
-
-            </SafeAreaView>
-        )
-
+        if (permision) {
+            const asset = await MediaLibrary.createAssetAsync(image);
+            setPhoto(asset)
+            setImage(null)
+            console.log(plant)
+            
+            entityRef
+                .doc(plant.id)
+                .update({ imgUri: asset.uri })
+                .catch((error) => alert(error))
+            
+        } else {
+            Alert.alert("necesitas dar permiso para poder guardar la imagen")
+        }
     }
 
-    export default ImageUploader
+
+    return (
+        <SafeAreaView style={styles.container}>
+
+            <TouchableOpacity style={styles.selectButton} onPress={takeImage}>
+                {!photo ? (<Text style={styles.buttonText}>Hacer Foto</Text>) : (<Text style={styles.buttonText}>Nueva Foto</Text>)}
+            </TouchableOpacity>
+
+            <View style={styles.imageContainer}>
+                {image && <Image source={{ uri: image }} style={styles.imageBox} />}
+                {image &&
+                    <TouchableOpacity style={styles.uploadButton} onPress={saveImg}>
+                        <Text style={styles.buttonText}>¿Guardar Foto?</Text>
+                    </TouchableOpacity>
+                }
+                {photo && <Image source={{ uri: photo.uri }} style={styles.imageBox} />}
+            </View>
+
+        </SafeAreaView>
+    )
+
+}
+
+export default ImageUploader
