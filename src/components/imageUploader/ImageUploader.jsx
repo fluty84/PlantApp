@@ -84,7 +84,7 @@ const ImageUploader = ({ plantName, plant }) => {
         <SafeAreaView style={styles.container}>
 
             <TouchableOpacity style={styles.selectButton} onPress={takeImage}>
-                {!photo ? (<Text style={styles.buttonText}>Hacer Foto</Text>) : (<Text style={styles.buttonText}>Nueva Foto</Text>)}
+                {!plant.imgUri? (<Text style={styles.buttonText}>Hacer Foto</Text>) : (<Text style={styles.buttonText}>Nueva Foto</Text>)}
             </TouchableOpacity>
 
             <View style={styles.imageContainer}>
