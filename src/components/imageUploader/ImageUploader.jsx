@@ -94,7 +94,7 @@ const ImageUploader = ({ plantName, plant }) => {
                         <Text style={styles.buttonText}>¿Guardar Foto?</Text>
                     </TouchableOpacity>
                 }
-                {photo && <Image source={{ uri: photo.uri }} style={styles.imageBox} />}
+                {plant.imgUri && <Image source={{ uri: plant.imgUri }} style={styles.imageBox} />}
             </View>
 
         </SafeAreaView>

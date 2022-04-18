@@ -4,6 +4,7 @@ import styles from './styles'
 import { firebase } from '../../firebase/config'
 import { NavigationContainer } from '@react-navigation/native'
 import ImageUploader from '../../components/imageUploader/ImageUploader'
+import { Image } from 'react-native-web'
 
 
 const HomeScreen = ({ props, userLoged, navigation }) => {
