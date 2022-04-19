@@ -1,17 +1,22 @@
 # PlantApp
 
-My first React-Native + firebase Android APP
+My first React-Native + firebase Android APP, make whith EXPO.
 
 Create an account, save your plants and make reminders to water it. 
 
-To try on local computer =>
+To try last update, local without install  =>
 
-1.Download and install dependences with "#npm -i" on downloaded App's folder  with your terminal
+- 1.Download and install dependences with "#npm -i" on downloaded App's folder  with your terminal
 
-2.Install Expo Go on your android phone from google Play
+- 2.Install Expo Go on your android phone from google Play: https://play.google.com/store/apps/details?id=host.exp.exponent&referrer=www
 
-3.Go to react-native-firebase folder  with your terminal, and run "#expo start" 
+- 3.Go to app's folder with your terminal, and run "#expo start" 
 
-4.Open on your Android device the app using QR
+- 4.Open on your Android device the app using QR
 
-working-on
+Try Apha 1.0.0 APK on your Android phone: 
+
+- Download and install => https://drive.google.com/file/d/1DY51DmYu_PXDKcuM2oXbrZ8G8LfNA73l/view?usp=sharing
+
+- You should have permissions to install from unknown sources
+- Don't be afraid about the warnings, you can check all code ;)
