@@ -102,7 +102,7 @@ const HomeScreen = ({ props, userLoged, navigation }) => {
                     {
                         item.lastWater && daysLeft > 0 ?
                             <Text>Quedan:{daysLeft} dias</Text> :
-                            <Text style={styles.redText} > Seca hace {daysLeft *-1} dia</Text>
+                            <Text style={styles.redText} > Seca hace {daysLeft * -1} dia</Text>
                     }
                     {
                         item.lastWater && daysLeft > 0 ?
@@ -167,6 +167,8 @@ const HomeScreen = ({ props, userLoged, navigation }) => {
                     </TouchableOpacity>
                 </View>
 
+
+                {/* plant list */}
                 <View style={styles.list}>
                     {
                         entities && (
@@ -181,9 +183,9 @@ const HomeScreen = ({ props, userLoged, navigation }) => {
                         )
                     }
                 </View>
-                <TouchableOpacity style={styles.buttonFloor} onPress={backLoggin} >
+                {/* <TouchableOpacity style={styles.buttonFloor} onPress={backLoggin} >
                     <Text style={styles.buttonText} onPress={backLoggin}>Cambiar de usuario</Text>
-                </TouchableOpacity>
+                </TouchableOpacity> */}
             </KeyboardAvoidingView>
         </>
     )

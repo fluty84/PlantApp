@@ -4,7 +4,7 @@
     "slug": "react-native-firebase",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/appstore.png",
+    "icon": "./assets/icon.png",
     "splash": {
       "image": "./assets/happyP.png",
       "resizeMode": "contain",
@@ -21,7 +21,7 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/adaptative-icon.png",
         "backgroundColor": "#FFFFFF"
       },
       "googleServicesFile": "./google-services.json",

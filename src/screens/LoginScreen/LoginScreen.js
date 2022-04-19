@@ -43,7 +43,7 @@ const LoginScreen = ({ navigation }) => {
                 style={{ flex: 1, width: '100%' }}
                 keyboardShouldPersistTaps="always">
                 <Text
-                    style={styles.title}>PLANTapp</Text>
+                    style={styles.title}>Happy Plant</Text>
                 <Image
                     style={styles.logo}
                     source={require('../../../assets/happyP.png')}
@@ -73,10 +73,11 @@ const LoginScreen = ({ navigation }) => {
                     <Text style={styles.buttonTitle}>Log in</Text>
                 </TouchableOpacity>
                 <View style={styles.footerView}>
-                    <Text style={styles.footerText}>Don't have an account?
+                    <Text style={styles.footerText}>¿No tienes cuenta?
                         <Text onPress={onFooterLinkPress} style={styles.footerLink}>Sign up</Text>
                     </Text>
                 </View>
+                
             </KeyboardAwareScrollView>
         </View>
     )
