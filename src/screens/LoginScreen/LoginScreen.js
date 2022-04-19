@@ -14,24 +14,30 @@ const LoginScreen = ({ navigation }) => {
     }
 
     const onLoginPress = () => {
-       
+
         firebase
             .auth()
             .signInWithEmailAndPassword(email, password)
             .then((res) => {
-                const uid = res.user.uid
-                const usersRef = firebase.firestore().collection('users')
 
-                usersRef
-                    .doc(uid)
-                    .get()
-                    .then(firestoreDocument => {
-                        if(!firestoreDocument.exists) alert("User does not exist anymore")
-                        
-                        const user = firestoreDocument.data()
-                        navigation.navigate('Home', { user })
-                    })
-                    .catch(error => alert(error))
+                if (res.user.uid) {
+
+                    const uid = res.user.uid
+                    const usersRef = firebase.firestore().collection('users')
+
+                    usersRef
+                        .doc(uid)
+                        .get()
+                        .then(firestoreDocument => {
+                            if (!firestoreDocument.exists) alert("User does not exist anymore")
+
+                            const user = firestoreDocument.data()
+                            navigation.navigate('Home', { user })
+                            
+                        })
+                        .catch(error => Alert.alert(error.message))
+                }
+                else { Alert.alert("Contraseña incorrecta") }
 
             })
             .catch(error => Alert.alert(error))
@@ -77,7 +83,7 @@ const LoginScreen = ({ navigation }) => {
                         <Text onPress={onFooterLinkPress} style={styles.footerLink}>Sign up</Text>
                     </Text>
                 </View>
-                
+
             </KeyboardAwareScrollView>
         </View>
     )

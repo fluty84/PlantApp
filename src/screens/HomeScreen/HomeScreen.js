@@ -64,7 +64,7 @@ const HomeScreen = ({ props, userLoged, navigation }) => {
         }
     }
 
-    const renderEntity = ({ item, index }) => { //new plant form
+    const renderEntity = ({ item }) => { //new plant form
 
         const letWater = (item) => {
 
@@ -74,7 +74,7 @@ const HomeScreen = ({ props, userLoged, navigation }) => {
                 .catch((error) => alert(error))
         }
 
-        let daysLeft = ""
+        let daysLeft = 0
 
         const restDays = () => {
 
@@ -102,7 +102,7 @@ const HomeScreen = ({ props, userLoged, navigation }) => {
                     {
                         item.lastWater && daysLeft > 0 ?
                             <Text>Quedan:{daysLeft} dias</Text> :
-                            <Text style={styles.redText} > Seca hace {daysLeft * -1} dia</Text>
+                            <Text style={styles.redText} > Seca hace {daysLeft=0 * -1} dias</Text>
                     }
                     {
                         item.lastWater && daysLeft > 0 ?
@@ -120,9 +120,6 @@ const HomeScreen = ({ props, userLoged, navigation }) => {
         )
     }
 
-    const backLoggin = () => {
-        navigation.navigate('Login')
-    }
 
 
     return (
@@ -133,7 +130,7 @@ const HomeScreen = ({ props, userLoged, navigation }) => {
                         <TextInput
                             style={styles.input}
                             name='name'
-                            placeholder='Nombre'
+                            placeholder='Nombre de la planta'
                             placeholderTextColor="#aaaaaa"
                             onChangeText={(text) => {
                                 setEntityText({
@@ -143,11 +140,12 @@ const HomeScreen = ({ props, userLoged, navigation }) => {
                             }}
                             value={entityText.name}
                             underlineColorAndroid="transparent"
-                            autoCapitalize="none">
+                            autoCapitalize="sentences">
                         </TextInput>
                         <TextInput
                             style={styles.input}
-                            placeholder='regar cada'
+                            keyboardType='numeric'
+                            placeholder='Regar cada'
                             name='days'
                             placeholderTextColor="#aaaaaa"
                             onChangeText={(text) => {

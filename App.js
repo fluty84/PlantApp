@@ -34,8 +34,8 @@ export default function App() {
           .get()
           .then((document)=> {
             const userData = document.data()
-            setLoading(false)
             setUser(userData)
+            setLoading(false)
           })
           .catch((error)=>{
             setLoading(false)
@@ -57,10 +57,10 @@ export default function App() {
             <Stack.Screen name="Home">
               {props => <HomeScreen {...props} userLoged={user} extraData={user}></HomeScreen>}
             </Stack.Screen>
-            <Stack.Screen name="Login">
+            {/* <Stack.Screen name="Login">
               {props => <LoginScreen {...props} setUser={setUser} extraData={user}></LoginScreen>}
             </Stack.Screen>
-            <Stack.Screen name="Registration" component={RegistrationScreen}></Stack.Screen>
+            <Stack.Screen name="Registration" component={RegistrationScreen}></Stack.Screen> */}
 
             </>
           )
