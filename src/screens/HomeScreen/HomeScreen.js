@@ -41,9 +41,9 @@ const HomeScreen = ({ props, userLoged, navigation }) => {
     }, [])
 
     const onAddButtonPress = () => {
-       
+
         const { name, days } = entityText
-       
+
         const timestamp = firebase.firestore.FieldValue.serverTimestamp()
 
         if (name.length > 0) {
@@ -67,7 +67,7 @@ const HomeScreen = ({ props, userLoged, navigation }) => {
     const renderEntity = ({ item, index }) => { //new plant form
 
         const letWater = (item) => {
-            
+
             entityRef
                 .doc(item)
                 .update({ lastWater: Date() })
@@ -81,10 +81,10 @@ const HomeScreen = ({ props, userLoged, navigation }) => {
             let lastWater = new Date(item.lastWater)
             let now = new Date()
 
-            let substract = now.getTime() - lastWater.getTime() 
-            
-            daysLeft =  item.days - Math.round(substract / (1000 * 60 * 60 * 24))
-   
+            let substract = now.getTime() - lastWater.getTime()
+
+            daysLeft = item.days - Math.round(substract / (1000 * 60 * 60 * 24))
+
         }
 
         restDays()
@@ -92,15 +92,29 @@ const HomeScreen = ({ props, userLoged, navigation }) => {
 
         return (
             <View style={styles.entityContainer}>
+
                 <Text style={styles.entityText}>
                     {item.name}
                 </Text>
-                <Text>Regar cada: {item.days} dias </Text>
-                {item.lastWater ? <Text>Quedan:{daysLeft} dias</Text> :
-                 <Text> ¡Riégame!</Text>}
-                <TouchableOpacity style={styles.button} onPress={() => letWater(item.id)}>
-                    <Text style={styles.buttonText}>Regada :)</Text>
-                </TouchableOpacity>
+
+                <View style={styles.container}>
+                    <Text>Regar cada: {item.days} dias </Text>
+                    {
+                        item.lastWater && daysLeft > 0 ?
+                            <Text>Quedan:{daysLeft} dias</Text> :
+                            <Text style={styles.redText} > Seca hace {daysLeft *-1} dia</Text>
+                    }
+                    {
+                        item.lastWater && daysLeft > 0 ?
+                            <TouchableOpacity style={styles.button} onPress={() => letWater(item.id)}>
+                                <Text style={styles.buttonText}>Regada (•‿•)</Text>
+                            </TouchableOpacity> :
+                            <TouchableOpacity style={styles.buttonDry} onPress={() => letWater(item.id)}>
+                                <Text style={styles.buttonText}>Riegame! (._.)</Text>
+                            </TouchableOpacity>
+                    }
+                </View>
+
                 <ImageUploader plantName={item.name} plant={item}></ImageUploader>
             </View>
         )
@@ -141,7 +155,7 @@ const HomeScreen = ({ props, userLoged, navigation }) => {
                                     ...entityText,
                                     days: text
                                 })
-                               
+
                             }}
                             value={entityText.days}//cambiar
                             underlineColorAndroid="transparent"

@@ -63,11 +63,12 @@ const ImageUploader = ({ plantName, plant }) => {
     const saveImg = async () => {
         const permision = await MediaLibrary.requestPermissionsAsync()
 
+        console.log(permision)
+
         if (permision) {
             const asset = await MediaLibrary.createAssetAsync(image);
             setPhoto(asset)
             setImage(null)
-            console.log(plant)
             
             entityRef
                 .doc(plant.id)
@@ -84,7 +85,7 @@ const ImageUploader = ({ plantName, plant }) => {
         <SafeAreaView style={styles.container}>
 
             <TouchableOpacity style={styles.selectButton} onPress={takeImage}>
-                {!plant.imgUri? (<Text style={styles.buttonText}>Hacer Foto</Text>) : (<Text style={styles.buttonText}>Nueva Foto</Text>)}
+                {!plant.imgUri ? (<Text style={styles.buttonText}>Hacer Foto</Text>) : (<Text style={styles.buttonText}>📸</Text>)}
             </TouchableOpacity>
 
             <View style={styles.imageContainer}>

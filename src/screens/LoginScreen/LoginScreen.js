@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Image, Text, TextInput, TouchableOpacity, View } from 'react-native'
+import { Image, Text, TextInput, TouchableOpacity, View, Alert } from 'react-native'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import { firebase } from '../../firebase/config'
 
@@ -29,13 +29,12 @@ const LoginScreen = ({ navigation }) => {
                         if(!firestoreDocument.exists) alert("User does not exist anymore")
                         
                         const user = firestoreDocument.data()
-                        //user? setUser(user) : setUser('')
                         navigation.navigate('Home', { user })
                     })
                     .catch(error => alert(error))
 
             })
-            .catch(error => alert(error))
+            .catch(error => Alert.alert(error))
     }
 
     return (

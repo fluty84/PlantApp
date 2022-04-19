@@ -9,9 +9,9 @@ export default styles = StyleSheet.create({
     },
     selectButton: {
         borderRadius: 5,
-        width: 150,
+        width: 100,
         height: 50,
-        backgroundColor: '#8ac6d1',
+        backgroundColor: 'darkseagreen',
         alignItems: 'center',
         justifyContent: 'center'
     },
@@ -22,11 +22,12 @@ export default styles = StyleSheet.create({
         backgroundColor: '#ffb6b9',
         alignItems: 'center',
         justifyContent: 'center',
-        marginTop: 20
+        marginTop: -150,
+        marginBottom: 100
     },
     buttonText: {
         color: 'white',
-        fontSize: 18,
+        fontSize: 20,
         fontWeight: 'bold'
     },
     imageContainer: {

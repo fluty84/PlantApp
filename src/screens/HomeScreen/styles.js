@@ -1,12 +1,14 @@
 import { useFonts } from 'expo-font';
 import { StyleSheet } from 'react-native';
-import { backgroundColor } from 'react-native/Libraries/Components/View/ReactNativeStyleAttributes';
+import { backgroundColor, shadowColor } from 'react-native/Libraries/Components/View/ReactNativeStyleAttributes';
 
 
 export default StyleSheet.create({
     container: {
         flex: 1,
-        alignItems: 'center'
+        alignItems: 'center',
+        marginTop: 10,
+        marginBottom:10
     },
     formContainer: {
         flexDirection: 'column',
@@ -46,7 +48,15 @@ export default StyleSheet.create({
     button: {
         height: 44,
         borderRadius: 5,
-        backgroundColor: '#788eec',
+        backgroundColor: 'green',
+        width: 100,
+        alignItems: "center",
+        justifyContent: 'center'
+    },
+    buttonDry: {
+        height: 44,
+        borderRadius: 5,
+        backgroundColor: 'chocolate',
         width: 100,
         alignItems: "center",
         justifyContent: 'center'
@@ -81,8 +91,15 @@ export default StyleSheet.create({
         paddingBottom: 16
     },
     entityText: {
-        fontSize: 20,
-        color: '#333333'
+        fontSize: 25,
+        color: 'darkgreen', 
+        fontFamily: "Inter_900Black"
+        
     }, 
+    redText: {
+        fontSize: 16,
+        fontWeight:"bold",
+        color: 'crimson'
+    } 
 
 })

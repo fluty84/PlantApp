@@ -1,12 +1,12 @@
 {
   "expo": {
-    "name": "react-native-firebase",
+    "name": "Happy Plant APP",
     "slug": "react-native-firebase",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/appstore.png",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/happyP.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -25,25 +25,31 @@
         "backgroundColor": "#FFFFFF"
       },
       "googleServicesFile": "./google-services.json",
-      "softwareKeyboardLayoutMode": "pan"
+      "softwareKeyboardLayoutMode": "pan",
+      "package": "com.fluty84.plantapp",
+      "versionCode": 1
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
     "plugins": [
       "@react-native-firebase/app",
-      "expo-media-library",
-      // {
-      //   "photosPermission": "Allow $(PRODUCT_NAME) to access your photos.",
-      //   "savePhotosPermission": "Allow $(PRODUCT_NAME) to save photos.",
-      //   "isAccessMediaLocationEnabled": true
-      // }
-      // [
-         "expo-image-picker"
-      //   {
-      //     "photosPermission": "The app accesses your photos to let you share them with your friends."
-      //   }
-      // ]
+      [
+        "expo-media-library",
+        {
+          "photosPermission": "Allow $(PRODUCT_NAME) to access your photos.",
+          "savePhotosPermission": "Allow $(PRODUCT_NAME) to save photos.",
+          "isAccessMediaLocationEnabled": "true"
+        }
+      ],
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "The app accesses your photos to let you share them with your friends."
+        }
+      ]
     ]
+
+
   }
 }
