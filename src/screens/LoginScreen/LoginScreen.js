@@ -15,7 +15,7 @@ const LoginScreen = ({ navigation }) => {
 
     const onLoginPress = () => {
 
-        firebase
+      try { firebase
             .auth()
             .signInWithEmailAndPassword(email, password)
             .then((res) => {
@@ -40,7 +40,10 @@ const LoginScreen = ({ navigation }) => {
                 else { Alert.alert("Contraseña incorrecta") }
 
             })
-            .catch(error => Alert.alert(error))
+            .catch(error => Alert.alert(error.message))
+        } catch(error){
+            Alert.alert(error.message)
+        }
     }
 
     return (

@@ -8,6 +8,7 @@ import { decode, encode } from 'base-64'
 import AppLoading from "expo-app-loading"
 import { useFonts, Inter_900Black } from '@expo-google-fonts/inter'
 import { firebase } from './src/firebase/config'
+import { Alert } from 'react-native'
 
 
 if (!global.btoa) { global.btoa = encode }
@@ -25,10 +26,11 @@ export default function App() {
     Inter_900Black,
   })
 
-  useEffect(() => {
+  useEffect( () => {
     const usersRef = firebase.firestore().collection('users')
     firebase.auth().onAuthStateChanged(user => {
       if(user){
+        console.log('el usuario es', user.uid)
         usersRef
           .doc(user.uid)
           .get()
@@ -42,9 +44,11 @@ export default function App() {
           })
       } else {
         setLoading(false)
+        console.log('no user')
       }
     })
-  }, [])
+  }, [user])
+
 
   if (!fontLoaded || loading) {
     return <AppLoading></AppLoading>
