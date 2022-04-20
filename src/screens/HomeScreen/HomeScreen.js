@@ -102,7 +102,7 @@ const HomeScreen = ({ props, userLoged, navigation }) => {
                     {
                         item.lastWater && daysLeft > 0 ?
                             <Text>Quedan:{daysLeft} dias</Text> :
-                            <Text style={styles.redText} > Seca hace {daysLeft=0 * -1} dias</Text>
+                            <Text style={styles.redText} > Seca hace {(daysLeft || 0)  * -1} dias</Text>
                     }
                     {
                         item.lastWater && daysLeft > 0 ?
