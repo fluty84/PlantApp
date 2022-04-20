@@ -16,7 +16,7 @@ To try last update, local without install  =>
 
 Try Apha 1.0.2 APK on your Android phone: 
 
-- Download and install => https://drive.google.com/file/d/1DY51DmYu_PXDKcuM2oXbrZ8G8LfNA73l/view?usp=sharing
+- Download and install => https://drive.google.com/file/d/1ypw-IMz9mB8l3pTQsoNoxQiyRMnD-70X/view?usp=sharing
 
 - You should have permissions to install from unknown sources
 - Don't be afraid about the warnings, you can check all code ;)
