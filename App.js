@@ -8,7 +8,6 @@ import { decode, encode } from 'base-64'
 import AppLoading from "expo-app-loading"
 import { useFonts, Inter_900Black } from '@expo-google-fonts/inter'
 import { firebase } from './src/firebase/config'
-import { Alert } from 'react-native'
 
 
 if (!global.btoa) { global.btoa = encode }

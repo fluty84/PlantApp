@@ -19,11 +19,7 @@ const ImageUploader = ({ plantName, plant }) => {
 
     const [image, setImage] = useState(null)
     const [imageName, setImageName] = useState(null)
-    const [uploading, setUploading] = useState(false)
-    const [transferred, setTransferred] = useState(0)
     const [photo, setPhoto] = useState(null)
-    const [galleryPermission, setGalleryPermission] = useState(null)
-    const [status, requestPermission] = MediaLibrary.usePermissions();
 
     let source = {}
 
@@ -38,7 +34,6 @@ const ImageUploader = ({ plantName, plant }) => {
 
         if (!result.cancelled) {
 
-
             const uri = result.uri
             const type = result.type
             const name = plantName.replace(/\s+/g, '').toLowerCase() + ".jpg"
@@ -48,7 +43,6 @@ const ImageUploader = ({ plantName, plant }) => {
                 type,
                 name
             }
-
 
             setImage(result.uri);
         }
