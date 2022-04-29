@@ -14,9 +14,9 @@ To try last update, local without install  =>
 
 - 4.Open on your Android device the app using QR
 
-Try Apha 1.0.2 APK on your Android phone: 
+Try Apha 1.0.3 APK on your Android phone: 
 
-- Download and install => https://drive.google.com/file/d/1ypw-IMz9mB8l3pTQsoNoxQiyRMnD-70X/view?usp=sharing
+- Download and install => https://drive.google.com/file/d/1ggYENygXkqq3UjF0vFDGviCCUClzamas/view?usp=sharing
 
 - You should have permissions to install from unknown sources
 - Don't be afraid about the warnings, you can check all code ;)
