@@ -19,7 +19,11 @@ const RegistrationScreen = ({ navigation }) => {
 
     const onRegisterPress = () => {
         if( password !== confirmPassword){
-            alert("Passwords don't match")
+            alert("Las contraseñas")
+            return
+        }
+        if (password.length < 6){
+            alert("La contraseña debe tener al menos 6 caracteres")
             return
         }
         firebase 
@@ -40,7 +44,7 @@ const RegistrationScreen = ({ navigation }) => {
                         navigation.navigate('Home', {user:data})
                     })
                     .catch((error)=> {
-                        Alert.alert(error)
+                        Alert.alert(error.message)
                     })
             })
     }

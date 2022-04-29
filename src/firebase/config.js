@@ -7,7 +7,7 @@ import 'firebase/compat/firestore';
 
 const firebaseConfig = {
     apiKey: 'AIzaSyC1bibztkRGbXrj5Ctjz6QvI2o6LD8bbbc',
-    authDomain: 'your-auth-domain-b1234.firebaseapp.com',
+    authDomain: 'happy-plant-app.firebaseapp.com',
     databaseURL: 'https://happy-plant-app.firebaseio.com',
     projectId: 'happy-plant-app',
     storageBucket: 'happy-plant-app.appspot.com/',//??GS

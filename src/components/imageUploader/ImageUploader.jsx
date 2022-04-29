@@ -4,7 +4,6 @@ import {
     SafeAreaView,
     Text,
     TouchableOpacity,
-    Platform,
     Alert,
     Image
 } from 'react-native';
@@ -50,7 +49,6 @@ const ImageUploader = ({ plantName, plant }) => {
                 name
             }
 
-            console.log(source)
 
             setImage(result.uri);
         }
@@ -62,8 +60,6 @@ const ImageUploader = ({ plantName, plant }) => {
 
     const saveImg = async () => {
         const permision = await MediaLibrary.requestPermissionsAsync()
-
-        console.log(permision)
 
         if (permision) {
             const asset = await MediaLibrary.createAssetAsync(image);

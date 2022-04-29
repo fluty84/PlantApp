@@ -27,10 +27,9 @@ export default function App() {
   })
 
   useEffect( () => {
-    const usersRef = firebase.firestore().collection('users')
-    firebase.auth().onAuthStateChanged(user => {
+    const  usersRef = firebase.firestore().collection('users')
+      firebase.auth().onAuthStateChanged(user => {
       if(user){
-        console.log('el usuario es', user.uid)
         usersRef
           .doc(user.uid)
           .get()
@@ -56,7 +55,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        {user ?
+        {user != null ?
           ( <>
             <Stack.Screen name="Home">
               {props => <HomeScreen {...props} userLoged={user} extraData={user}></HomeScreen>}
