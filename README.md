@@ -18,5 +18,5 @@ Try Apha 1.0.3 APK on your Android phone:
 
 - Download and install => https://drive.google.com/file/d/1ggYENygXkqq3UjF0vFDGviCCUClzamas/view?usp=sharing
 
-- You should have permissions to install from unknown sources
-- Don't be afraid about the warnings, you can check all code ;)
+- You should have/give permissions to install from unknown sources.
+- Don't be afraid about the security warnings, you can check all code ;)
